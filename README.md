@@ -1,4 +1,4 @@
-# XSS Lab Rewrite - All GET
+# XSS Lab
 
 ## Đầu tiên phải cài môi trường thực thi code
 
