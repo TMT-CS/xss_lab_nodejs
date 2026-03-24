@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+
+<section class="reflected-page">
+  <div class="section-header">
+    <h1>Reflected XSS</h1>
+    <p>Chọn level bên dưới để hiển thị bài lab tương ứng, sau đó nhập payload và kiểm tra phản hồi.</p>
+  </div>
+
+  <div class="level-nav">
+    <% levels.forEach((level) => { %>
+      <a href="/reflected/<%= level.slug %>" class="level-tab <%= currentLevel.id === level.id ? 'active' : '' %>">
+        <span>Level <%= level.id %></span>
+        <small><%= level.shortTitle %></small>
+      </a>
+    <% }) %>
+  </div>
+
+  <div class="content-layout">
+    <section class="main-column">
+      <div class="workspace-card">
+        <div class="workspace-head">
+          <span class="pill solid">Level <%= currentLevel.id %></span>
+          <h2><%= currentLevel.title %></h2>
+          <p><%= currentLevel.description %></p>
+        </div>
+
+        <form class="payload-form" method="GET" action="/reflected/<%= currentLevel.slug %>">
+          <label for="payloadInput">Payload</label>
+          <div class="form-row">
+            <input id="payloadInput" type="text" name="q" value="<%= payload %>" placeholder="Enter payload here">
+            <button type="submit">Render</button>
+          </div>
+        </form>
+
+        <div class="render-panel">
+          <div class="render-panel-title">Application response</div>
+          <div class="render-box"><%- rendered %></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side-column">
+      <div class="panel">
+        <h3>Current section</h3>
+        <p>Reflected XSS</p>
+      </div>
+
+      <div class="panel">
+        <h3>Current level</h3>
+        <p>Level <%= currentLevel.id %></p>
+      </div>
+
+      <div class="panel soft">
+        <h3>URL format</h3>
+        <p>/reflected/level1?q=..., /reflected/level3?q=..., /reflected/level4?q=...</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

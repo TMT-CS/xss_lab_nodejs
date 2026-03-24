@@ -1,0 +1,76 @@
+<%- include('partials/header') %>
+
+<section class="hero-layout">
+  <div class="hero-main">
+    <div class="hero-copy">
+      <div class="kicker">Practice Lab</div>
+      <h1 class="hero-title">Cross-Site Scripting Web Lab</h1>
+      <a class="primary-btn" href="/reflected/level1">Open Reflected XSS</a>
+    </div>
+
+    <div class="hero-banner">
+      <div class="car-scene">
+        <div class="car-shadow"></div>
+        <div class="car-body">
+          <div class="car-window"></div>
+          <div class="car-light"></div>
+          <div class="wheel wheel-left"></div>
+          <div class="wheel wheel-right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-side">
+    <div class="panel">
+      <h3>Sections</h3>
+      <div class="mini-list">
+        <div class="mini-item">
+          <span>Reflected XSS</span><strong>5 levels</strong>
+        </div>
+        <div class="mini-item">
+          <span>Stored XSS</span><strong>later</strong>
+        </div>
+        <div class="mini-item"><span>DOM XSS</span><strong>later</strong></div>
+      </div>
+    </div>
+
+    <div class="panel soft">
+      <h3>Quick note</h3>
+      <p>
+        Lab sử dụng GET để giúp người học dễ quan sát Reflected XSS thông qua
+        query parameter và hỗ trợ việc phát hiện lỗ hổng bằng scanner.
+      </p>
+    </div>
+  </aside>
+</section>
+
+<section class="cards-section">
+  <div class="section-header">
+    <h2>Current module</h2>
+    <p>
+      Reflected XSS is ready. All levels use path-based routing and GET
+      payloads.
+    </p>
+  </div>
+
+  <div class="cards-grid">
+    <a href="/reflected/level1" class="info-card">
+      <span class="pill">Level 1</span>
+      <h3>Attribute context</h3>
+      <p>Payload is reflected inside an HTML attribute.</p>
+    </a>
+    <a href="/reflected/level2" class="info-card">
+      <span class="pill">Level 2</span>
+      <h3>JavaScript string</h3>
+      <p>Payload is placed into a JavaScript string.</p>
+    </a>
+    <a href="/reflected/level3" class="info-card">
+      <span class="pill">Level 3</span>
+      <h3>HTML filtered</h3>
+      <p>Most tags and common attributes are blocked.</p>
+    </a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

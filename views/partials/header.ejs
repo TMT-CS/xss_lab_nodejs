@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pageTitle %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="top-header">
+      <div class="brand-block">
+        <span class="brand-main">XSS</span><span class="brand-accent">LAB</span>
+      </div>
+      <div class="search-block">
+        <input type="text" placeholder="Search">
+        <button type="button">Search</button>
+      </div>
+    </header>
+
+    <nav class="top-nav">
+      <a href="/" class="nav-link <%= activePage === 'home' ? 'active' : '' %>">Home</a>
+      <a href="/reflected/level1" class="nav-link <%= activePage === 'reflected' ? 'active' : '' %>">Reflected XSS</a>
+      <a href="javascript:void(0)" class="nav-link disabled">Stored XSS</a>
+      <a href="javascript:void(0)" class="nav-link disabled">DOM XSS</a>
+    </nav>
+
+    <main class="page-wrap">
