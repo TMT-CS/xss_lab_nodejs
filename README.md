@@ -1,10 +1,10 @@
 # XSS Lab
 
-## Đầu tiên phải cài môi trường thực thi code
+## Cài môi trường thực thi code
 
 ```bash
 Vào trang bên dưới để tải:
-- https://nodejs.org/en/download
+https://nodejs.org/en/download
 ```
 
 ## Chức năng chính:
@@ -21,7 +21,7 @@ Node.js + Express lab rewritten with:
 ## Run
 
 ```bash
-npm install
+npm install express
 npm start
 ```
 
