@@ -24,17 +24,16 @@ function stripMostTagsAndAttrs(input = "") {
 
   return out;
 }
-
 function allowOnlyCustomTags(input = "") {
   let out = String(input);
 
-  // 1. Chỉ cho phép đúng 1 custom tag: <x-lab>
-  out = out.replace(/<\/?(?!x-lab\b)[a-z][a-z0-9-]*\b[^>]*>/gi, "");
+  // Chỉ cho phép đúng custom tag <xss> ... </xss>
+  out = out.replace(/<\/?(?!xss\b)[a-z][a-z0-9-]*\b[^>]*>/gi, "");
 
-  // 2. Chỉ giữ lại các attribute phục vụ XSS
-  // onfocus + autofocus + tabindex
+  // Chỉ giữ đúng 3 attribute phục vụ lab gốc:
+  // id, onfocus, tabindex
   out = out.replace(
-    /\s(?!onfocus\b|autofocus\b|tabindex\b)[a-zA-Z0-9:-]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
+    /\s(?!id\b|onfocus\b|tabindex\b)[a-zA-Z0-9:-]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
     "",
   );
 

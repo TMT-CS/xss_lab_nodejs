@@ -27,7 +27,8 @@
         <form class="payload-form" method="GET" action="/reflected/<%= currentLevel.slug %>">
           <label for="payloadInput">Payload</label>
           <div class="form-row">
-            <input id="payloadInput" type="text" name="q" value="<%= payload %>" placeholder="Enter payload here">
+            <% const safeValue = currentLevel.id === 4 ? '' : payload; %>
+<input id="payloadInput" type="text" name="q" value="<%= safeValue %>" placeholder="Enter payload here">
             <button type="submit">Render</button>
           </div>
         </form>

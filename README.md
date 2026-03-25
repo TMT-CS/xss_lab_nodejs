@@ -17,10 +17,6 @@ Node.js + Express lab rewritten with:
   - /reflected/level3
   - /reflected/level4
   - /reflected/level5
-- all 5 levels accept payload by GET query:
-  - /reflected/level3?q=payload
-  - /reflected/level4?q=payload
-- level 3 and level 4 are now GET-based for easier crawling and reflected-XSS scanning
 
 ## Run
 
