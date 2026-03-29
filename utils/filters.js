@@ -31,8 +31,6 @@ function allowOnlyCustomTags(input = "") {
   // Chỉ cho phép đúng custom tag <xss> ... </xss>
   out = out.replace(/<\/?(?!xss\b)[a-z][a-z0-9-]*\b[^>]*>/gi, "");
 
-  // Chỉ giữ đúng 3 attribute phục vụ lab gốc:
-  // id, onfocus, tabindex
   out = out.replace(
     /\s(?!id\b|onfocus\b|tabindex\b)[a-zA-Z0-9:-]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
     "",
