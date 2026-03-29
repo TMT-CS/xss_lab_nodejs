@@ -5,11 +5,14 @@
 ```bash
 Vào trang bên dưới để tải:
 https://nodejs.org/en/download
+Sau đó cài các thư viện:
+npm install express
+npm install nodemon
 ```
 
 ## Chức năng chính:
 
-Node.js + Express lab rewritten with:
+Node.js + Express lab with:
 
 - path style routes:
   - /reflected/level1
@@ -21,7 +24,6 @@ Node.js + Express lab rewritten with:
 ## Run
 
 ```bash
-npm install express
 npm start
 ```
 
