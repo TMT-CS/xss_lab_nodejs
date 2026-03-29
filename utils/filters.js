@@ -10,7 +10,7 @@ function encodeForJsLevel5(input = "") {
     .replace(/'/g, "\\'");
 }
 
-// lọc chưa đủ --> chặn càng nhiều tag, càng nhiều attribute nhất có thể Filter kiểu blacklist
+// lọc chưa đủ Filter kiểu blacklist
 function stripMostTagsAndAttrs(input = "") {
   let out = String(input);
   out = out.replace(
@@ -24,6 +24,7 @@ function stripMostTagsAndAttrs(input = "") {
 
   return out;
 }
+// lọc chưa đủ Filter kiểu while list
 function allowOnlyCustomTags(input = "") {
   let out = String(input);
 
