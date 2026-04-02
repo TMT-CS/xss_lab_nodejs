@@ -10,32 +10,33 @@ function encodeForJsLevel5(input = "") {
     .replace(/'/g, "\\'");
 }
 
-// lọc chưa đủ Filter kiểu blacklist
+// lọc chưa đủ Filter kiểu blacklist, nhưng còn nhiều thẻ chưa lọc
 function stripMostTagsAndAttrs(input = "") {
   let out = String(input);
   out = out.replace(
-    /<\/?(script|iframe|object|embed|link|meta|style)[^>]*>/gi,
+    /<\/?(script|xss|iframe|body|input|object|embed|link|meta|style)[^>]*>/gi,
     "",
   );
   out = out.replace(
-    /\s(srcdoc|xlink:href|formaction|data)\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
+    /\s(srcdoc|onfocus|xlink:href|formaction|data)\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
     "",
   );
 
   return out;
 }
-// lọc chưa đủ Filter kiểu while list
-function allowOnlyCustomTags(input = "") {
+// lọc chưa đủ Filter kiểu blacklist nhưng lọt thẻ xss
+function allowMostlyCustomTags(input = "") {
   let out = String(input);
-
-  // Chỉ cho phép đúng custom tag <xss> ... </xss>
-  out = out.replace(/<\/?(?!xss\b)[a-z][a-z0-9-]*\b[^>]*>/gi, "");
-
+  // Xóa một số tag phổ biến (không đầy đủ)
   out = out.replace(
-    /\s(?!id\b|onfocus\b|tabindex\b)[a-zA-Z0-9:-]+\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
+    /<\/?(script|svg|img|iframe|body|input|object|embed|link|meta|style)[^>]*>/gi,
     "",
   );
-
+  // Xóa một số event/attr nguy hiểm (không đầy đủ)
+  out = out.replace(
+    /\s(onerror|onload|onclick|onmouseover|src|href|data)\s*=\s*(".*?"|'.*?'|[^\s>]+)/gi,
+    "",
+  );
   return out;
 }
 
@@ -80,7 +81,7 @@ function renderLevel(level, payload = "") {
       return `
         <div class="preview-card">
           <div class="output-title">Custom tag output</div>
-          <div class="html-output">${allowOnlyCustomTags(cleanPayload)}</div>
+          <div class="html-output">${allowMostlyCustomTags(cleanPayload)}</div>
         </div>
       `;
     }
